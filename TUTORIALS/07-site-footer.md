@@ -1,0 +1,1 @@
+# Introduction to Publii Theming (Tutorial 07): The Site Footer

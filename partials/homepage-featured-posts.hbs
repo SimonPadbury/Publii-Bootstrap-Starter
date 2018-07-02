@@ -1,0 +1,83 @@
+{{!--
+ * FEATURED POSTS LISTING
+ * ======================
+--}}
+
+{{#if @config.custom.homepageFeaturedPosts}}
+	{{#if featuredPosts}}
+
+	<section class="container featured-posts my-4">
+
+		{{!-- Alteration to breakpoint for the featured posts card-deck.
+			Using card-deck so that cards have equal height.           --}}
+		<style>
+			@media (min-width: 576px) {
+				.card-deck.featured-posts {
+					-ms-flex-flow: column nowrap;
+					flex-flow: column nowrap;
+					margin-right: -15px;
+					margin-left: -15px;
+				}
+				.card-deck.featured-posts .card {
+					margin-bottom: 15px;
+				}
+			}
+			@media (min-width: 768px) {
+				.card-deck.featured-posts {
+					-ms-flex-flow: row wrap;
+					flex-flow: row wrap;
+					margin-right: -15px;
+					margin-left: -15px;
+				}
+				.card-deck.featured-posts .card {
+					margin-bottom: 0;
+				}
+			}
+		</style>
+
+		<div class="card-deck featured-posts">
+
+			{{#each featuredPosts}}
+
+				{{!-- Specify how many featured posts are displayed --}}
+				{{#checkIf @index '<' 3}}
+
+				<article class="card bg-light">	
+
+					{{#featuredImage}}
+						{{#if url}}
+						<a href="{{../url}}">
+							<img
+								class="card-img-top"
+								src="{{url}}"
+								sizes="{{sizes.listing}}"
+								srcset="{{srcset.listing}}"
+								alt="{{alt}}">
+						</a>
+						{{/if}}
+					{{/featuredImage}}
+			
+					<div class="card-body">
+						<p class="small">Featured</p>
+						<h5 class="card-title mb-1"><a href="{{url}}">{{title}}</a></h5>
+						<h6 class="small muted mb-3">
+							<time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+							{{date createdAt @config.custom.formatDate}}
+							</time>
+						</h6>
+						{{#if excerpt}}
+						<p class="card-text">{{{excerpt}}}</p>
+						{{/if}}
+						<p class="mb-0"><a href="{{url}}">Read more <i class="far fa-arrow-right"></i></a></p>
+					</div>
+
+				</article>{{!-- .card --}}
+			
+			{{/checkIf}}
+		{{/each}}
+
+		</div>
+	</section>{{!-- .featured-posts --}}
+
+	{{/if}}
+{{/if}}

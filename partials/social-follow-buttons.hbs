@@ -1,0 +1,47 @@
+{{#if @config.custom.socialFollowButtons}}
+
+<div class="{{#if @config.custom.copyrightText}}col-md-6 order-md-last text-md-right{{/if}} text-center py-3 social-follow">
+    Follow:&nbsp;
+    {{#if @config.custom.socialFacebook}}
+        <a href="{{@config.custom.socialFacebook}}" title="Facebook" aria-label="Facebook">
+            <i class="fab fa-facebook fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialTwitter}}
+        <a href="{{@config.custom.socialTwitter}}" title="Twitter" aria-label="Twitter">
+            <i class="fab fa-twitter fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialGoogleplus}}
+        <a href="{{@config.custom.social_googleplus}}" title="Google+" aria-label="Google+">
+            <i class="fab fa-google-plus fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialInstagram}}
+        <a href="{{@config.custom.socialInstagram}}" title="Instagram" aria-label="Instagram">
+            <i class="fab fa-instagram fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialLinkedin}}
+        <a href="{{@config.custom.socialLinkedin}}" title="LinkedIn" aria-label="LinkedIn">
+            <i class="fab fa-linkedin fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialVimeo}}
+        <a href="{{@config.custom.socialVimeo}}" title="Vimeo" aria-label="Vimeo">
+            <i class="fab fa-vimeo fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialPinterest}}
+        <a href="{{@config.custom.socialPinterest}}" title="Pinterest" aria-label="Pinterest">
+            <i class="fab fa-pinterest fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+    {{#if @config.custom.socialYoutube}}
+        <a href="{{@config.custom.socialYoutube}}" title="Youtube" aria-label="Youtube">
+            <i class="fab fa-youtube fa-fw fa-lg"></i>
+        </a>
+    {{/if}}
+</div>
+
+{{/if}}

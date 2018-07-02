@@ -1,0 +1,26 @@
+{{!--
+ * SITE MODULE - AUTHORS
+ * =====================
+--}}
+
+{{!-- We do not provide an if-conditional here as at least one author (main author) always exists. Instead, we can use the on/off custom if-conditional {{#if @config.custom.authors}} within this section of the theme settings. --}}
+
+{{#if @config.custom.authors}}
+
+<div class="authors mb-4">
+    <h3>{{ translate 'sidebar.authors' }}</h3>
+    <ul>
+        {{#each authors}}
+            {{#checkIf @index '<' @config.custom.authorsAmount}} {{!-- With this it is possible to specify the number of authors that are displayed. --}}
+                <li>
+                    <a href="{{url}}" class="authors-title">{{name}}</a>
+                    <span class="text-muted float-right">{{ translate 'sidebar.authorsPost' }}
+                        {{postsNumber}}
+                    </span>
+                </li>
+            {{/checkIf}}
+        {{/each}}
+    </ul>
+</div>
+
+{{/if}}

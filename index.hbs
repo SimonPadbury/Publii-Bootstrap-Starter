@@ -1,0 +1,28 @@
+{{> site-head}}
+
+<main>
+
+    {{#if @renderer.isFirstPage}}
+        {{> homepage-hero}}
+        {{> homepage-featured-posts}}
+    {{/if}}
+
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="sidebar col-md-4 order-md-last">
+                {{> site-sidebar}}
+            </div>
+
+            <div class="col-md">
+                {{> posts}}
+
+                {{> pagination}}
+            </div>
+ 
+        </div>
+    </div>
+
+</main>
+
+{{> site-footer}}

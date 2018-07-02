@@ -1,0 +1,38 @@
+{{!--
+ * SITE MODULE - NEWSLETTER
+ * ========================
+--}}
+
+{{!-- We use the custom if-conditional {{#if @config.custom.newsletter}} to switch this section on/off in the theme settings  --}}
+
+{{#if @config.custom.newsletter}}
+
+<div class="newsletter">
+    <h3>{{ translate 'sidebar.newsletter' }}</h3>
+    <p>{{ translate 'sidebar.newsletterDesc' }}</p>
+
+    {{#checkIf @config.custom.newsletterForm '==' "mailchimp" }}
+        <!-- Begin MailChimp Signup Form -->
+        <form
+            class="form-inline"
+            action="https:{{@config.custom.newsletterFormMailchimp}}"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            target="_blank"
+            novalidate="novalidate">
+            <input class="form-control mr-2" type="email" value="" placeholder="e-mail address" name="EMAIL">
+            <input
+                type="submit"
+                value="{{ translate 'sidebar.newsletterSubscribe' }}"
+                name="subscribe"
+                class="btn btn-primary my-2">
+        </form>
+        <!--End mc_embed_signup-->
+    {{else}}
+        {{{@config.custom.newsletterFormCustom}}}
+    {{/checkIf}}
+
+</div>
+
+{{/if}}

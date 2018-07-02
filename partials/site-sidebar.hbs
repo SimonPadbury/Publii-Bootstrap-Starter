@@ -1,0 +1,24 @@
+{{!--
+ * SIDEBAR
+ * =======
+--}}
+
+<style>
+    .position-sticky {
+        position: -webkit-sticky;
+	    position: sticky;
+        top: 15px;
+    }
+</style>
+
+<div class="position-sticky">
+
+    {{> module-search}}
+
+    {{> module-menu-1 menus.moduleMenu1}}
+
+    {{> module-authors}}
+
+    {{> module-tags}}
+
+</div>

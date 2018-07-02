@@ -1,0 +1,18 @@
+{{#checkIfAny @config.custom.moduleMenu1}}
+
+<div class="sidebar-menu mb-4">
+    <h3>{{name}}</h3>
+    <ul>
+        {{#each items}}
+        <li>
+            {{#if link}}
+            <a href="{{menuUrl}}"{{#if title}} title="{{title}}"{{/if}}>{{label}}</a>
+            {{else}}
+            <span {{#if title}} title="{{title}}"{{/if}}>{{label}}</span>
+            {{/if}}
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+{{/checkIfAny}}

@@ -1,0 +1,26 @@
+{{!--
+ * INDEX PAGINATION
+ * ================
+--}}
+
+{{#if @pagination}}
+    <hr>
+    <nav class="pagination text-center">
+        {{#if @pagination.nextPage}}
+            <a
+                href="{{@pagination.nextPageUrl}}"
+                title="{{ translate 'partials.pagination.prev' }}">
+                <i class="fas fa-arrow-left"></i>
+                {{ translate 'partials.pagination.prev' }}
+            </a>
+        {{/if}}
+        {{#if @pagination.previousPage}}
+            <a
+                href="{{@pagination.previousPageUrl}}"
+                title="{{ translate 'partials.pagination.next' }}">
+                {{ translate 'partials.pagination.next' }}
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        {{/if}}
+    </nav>
+{{/if}}

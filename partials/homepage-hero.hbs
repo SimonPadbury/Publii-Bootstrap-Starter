@@ -1,0 +1,34 @@
+{{!--
+ * HOMEPAGE HERO
+ * =============
+--}}
+
+{{#if @config.custom.homepageHero}}
+	{{#checkIfAny @config.custom.uploadHero @config.custom.textHero}}
+
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+		
+		{{#if @config.custom.uploadHero}}
+		<img
+			src="{{@config.custom.uploadHero}}"
+			{{responsiveSrcSet @config.custom.uploadHero}}
+			{{responsiveSizes}}
+			alt="{{@config.custom.uploadHeroAlt}}"
+			{{#if @config.custom.uploadHeroTitle}}
+				title="{{@config.custom.uploadHeroTitle}}"
+			{{/if}}
+			class="hero-image">
+		{{/if}}
+		
+		{{#if @config.custom.textHero}}
+		<div class="hero-text">
+		{{{@config.custom.textHero}}}
+		</div>
+		{{/if}}
+		
+		</div>
+	</div>
+
+	{{/checkIfAny}}
+{{/if}}

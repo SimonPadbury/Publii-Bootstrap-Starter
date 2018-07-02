@@ -1,0 +1,23 @@
+{{!--
+ * SITE MODULE - OWNER
+ * ===================
+--}}
+
+{{!-- We do not provide an if-conditional {{#if siteOwner}} here as an owner always exists. Instead, we can use the on/off if-conditional {{#if @config.custom.owner}} within this section of the theme settings. --}}
+
+{{#if @config.custom.owner}}
+    {{#siteOwner}}
+
+    <h3>{{ translate 'sidebar.owner' }}</h3>
+
+    <div class="media">
+        <img src="{{avatar}}" alt="{{name}}" style="display: block; max-height: 100px; max-width: 100px; margin: 15px auto 0 auto; border-radius: 50%;">
+        <div class="media-body ml-3">
+            <h5 class="mt-0">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+            <a class="card-text" href="mailto:{{email}}" class="owner-email">{{email}}</a>
+        </div>
+    </div>
+
+    {{/siteOwner}}
+{{/if}}

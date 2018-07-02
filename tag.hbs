@@ -1,0 +1,39 @@
+{{> site-head}}
+
+<main>
+
+    <div class="container my-5 search">
+        <div class="row">
+
+            <div class="sidebar col-md-4 order-md-last">
+                {{> site-sidebar}}
+            </div>
+
+            <div class="col-md">
+
+                <header class="mb-5">
+                    {{#tag}}
+                        <h1>
+                            Tag: {{name}}
+                            <span class="text-muted">({{postsNumber}})</span>
+                        </h1>
+                        {{#if description}}
+                            <p>
+                                {{description}}
+                            </p>
+                        {{/if}}
+                    {{/tag}}
+                </header>{{!-- .page-header --}}
+
+                {{> posts}}
+
+                {{> pagination}}
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+{{> site-footer}}

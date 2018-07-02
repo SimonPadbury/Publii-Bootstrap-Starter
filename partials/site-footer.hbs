@@ -1,0 +1,43 @@
+    <footer class="site-footer bg-light mt-5">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 my-5">
+                {{> module-owner}}
+                </div>
+
+                <div class="col-md-6 my-5">
+                {{> module-newsletter}}
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container border-top">
+            <div class="row">
+
+                {{> social-follow-buttons}}
+
+                {{#if @config.custom.copyrightText}}
+                <div class="{{#if @config.custom.socialFollowButtons}}col-md-6 text-md-left{{/if}} text-center py-3">
+                    {{{@config.custom.copyrightText}}}
+                </div>
+                {{/if}}
+
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <script defer src="{{js "scripts.min.js"}}"></script>
+
+    {{{@footerCustomCode}}}
+
+</body>
+</html>

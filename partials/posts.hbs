@@ -1,0 +1,75 @@
+{{!-- 
+ * INDEX LOOP - used by Index, Author, Tag and Search pages
+ * ========== 
+--}} 
+
+{{#each posts}}
+
+<article class="mb-5">
+
+    {{#featuredImage}} {{#if url}}
+    <a href="{{../url}}">
+        <img src="{{url}}" sizes="{{sizes.listing}}" srcset="{{srcset.listing}}" alt="{{alt}}">
+    </a>
+    {{/if}} {{/featuredImage}}
+
+    <header>
+        <h2>
+            <a href="{{url}}">{{title}}</a>
+        </h2>
+        <style>
+            .listing-meta .tag:after { content: "," }
+            .listing-meta .tag:last-of-type:after { content: "" }
+        </style>
+
+        <p class="listing-meta small">
+
+            {{#isFeatured}}
+                <span class="badge badge-primary">
+                    <i class="fas fa-star"></i>
+                    Featured Post
+                </span>&#32;
+            {{/isFeatured}}
+        
+            {{#is "index"}}
+                By {{#author}} 
+                <a href="{{url}}" title="{{name}}">{{name}}</a> 
+                {{/author}} 
+                on <time datetime="{{date createdAt @config.custom.formatDate}}"> 
+                {{date createdAt @config.custom.formatDate}} 
+                </time>
+                {{#if tags}}
+                in {{#each tags}} <a class="tag" href="{{url}}">{{name}}</a> {{/each}} 
+                {{/if}}
+            {{/is}}
+
+            {{#is "author"}}
+                Published <time datetime="{{date createdAt @config.custom.formatDate}}">
+                {{date createdAt @config.custom.formatDate}}
+                </time>
+                {{#if tags}}
+                in {{#each tags}} <a class="tag" href="{{url}}">{{name}}</a> {{/each}} 
+                {{/if}}
+            {{/is}}
+
+            {{#is "tag"}}
+                By {{#author}}
+                <a href="{{url}}" title="{{name}}">{{name}}</a>
+                {{/author}}
+                on <time datetime="{{date createdAt @config.custom.formatDate}}">
+                {{date createdAt @config.custom.formatDate}}
+                </time>
+            {{/is}}
+        </p>
+    </header>
+
+    {{#if excerpt}}
+    <section>
+        <p>{{{excerpt}}}</p>
+        <p><a href="{{url}}">Read more <i class="far fa-arrow-right"></i></a></p>
+    </section>
+    {{/if}}
+
+</article>
+
+{{/each}}

@@ -1,0 +1,42 @@
+{{> site-head}}
+
+<main>
+
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="sidebar col-md-4 order-md-last">
+                {{> site-sidebar}}
+            </div>
+
+            <div class="col-md">
+                <header class="clearfix author mb-5">
+                    {{#author}}
+                        <h1 class="mb-5">
+                            Author: {{name}} <span class="small text-muted">({{postsNumber}} {{ translate "listing.post" (math postsNumber '+' 0)}})</span>
+                        </h1>
+                        
+                        {{#if avatar}}
+                            <img src="{{avatar}}" class="author__avatar" alt="{{name}}" style="position: relative; max-height: 100px; max-width: 100px; border-radius: 50%; float: left; margin-right: 15px;">
+                        {{/if}}
+                        {{#if description}}
+                            <p>
+                                {{description}}
+                            </p>
+                        {{/if}}
+                    {{/author}}
+                </header>{{!-- .page-header --}}
+
+                {{> posts}}
+
+                {{> pagination}}
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+{{> site-footer}}

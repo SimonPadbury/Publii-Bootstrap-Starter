@@ -1,0 +1,76 @@
+{{!--
+ * NAVBAR
+ * ======
+--}}
+
+<nav class="navbar {{@config.custom.navbarBackgroundColor}} navbar-expand-lg">
+    <a class="navbar-brand" href="{{@website.url}}">{{@website.name}}</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ml-auto">
+            {{#each items}}
+                {{#if items}}
+                <li class="nav-item dropdown">
+                    {{#if link}}
+                    <a class="nav-link dropdown-toggle" href="{{menuUrl}}"{{#if title}} title="{{title}}"{{/if}} role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{label}}</a>
+                    {{else}}
+                    <span class="nav-link disabled dropdown-toggle" {{#if title}} title="{{title}}"{{/if}} role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{label}}</span>
+                    {{/if}}
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {{#each items}}
+                            {{#if link}}
+      	                    <a class="dropdown-item" href="{{menuUrl}}"{{#if title}} title="{{title}}"{{/if}}>{{label}}</a>
+      	                    {{else}}
+      	                    <span class="dropdown-item" {{#if title}} title="{{title}}"{{/if}}>{{label}}</span>
+      	                    {{/if}}
+                        {{/each}}
+                    </div>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    {{#if link}}
+                    <a class="nav-link" href="{{menuUrl}}"{{#if title}} title="{{title}}"{{/if}}>{{label}}</a>
+                    {{else}}
+                    <span{{#if title}} class="nav-link disabled" title="{{title}}"{{/if}}>{{label}}</span>
+                    {{/if}}
+                </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+
+        {{#if @config.custom.navbarSearch}}
+
+        <form action="{{@website.searchUrl}}" class="form-inline my-2 my-lg-0">
+            <input
+                type="search"
+                name="{{@config.custom.searchParam}}"
+                placeholder="{{ translate 'search.placeholder' }}"
+                class="form-control mr-2"/>
+            <button class="my-2 btn {{@config.custom.navbarSearchButton}}" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+
+        <script>
+            (function () {
+                var cx = '{{@config.custom.searchId}}';
+                var gcse = document.createElement('script');
+                gcse.type  = 'text/javascript';
+                gcse.async = true;
+                gcse.src   = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+        </script>
+
+        <gcse:searchresults-only></gcse:searchresults-only>
+
+        {{/if}}
+
+    </div>
+</nav>

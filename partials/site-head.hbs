@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{#if title}}
+        <title>{{title}}</title>
+    {{else}}
+        <title>{{@website.name}}</title>
+    {{/if}} 
+    {{metaDescription}} 
+    {{metaRobots}} 
+    {{canonicalLink}} 
+    {{ampLink}} 
+    {{feedLink}} 
+    {{socialMetaTags}} 
+    {{#if @pagination}}
+        {{#if @pagination.previousPage}}
+            <link rel="prev" href="{{@pagination.previousPageUrl }}"> 
+        {{/if}} 
+        {{#if @pagination.nextPage}}
+            <link rel="next" href="{{@pagination.nextPageUrl }}"> 
+        {{/if}}
+    {{/if}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{css "style.css" }}">
+    <style>
+        /* Flexbox sticky footer
+        https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/ */
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+    {{jsonLD}} 
+    {{{@headCustomCode}}}
+</head>
+
+<body>
+    {{{@bodyCustomCode}}}
+
+{{> navbar menus.navbarMenu}}
+
+{{!--
+<div class="container">
+    <header class="top">
+        <a class="logo" href="{{@website.url}}">
+            {{#if @website.logo}}
+                <img src="{{@website.logo}}" alt="{{@website.name}}">
+            {{else}}
+                {{@website.name}}
+            {{/if}}
+        </a>
+    </header>
+</div>
+--}}

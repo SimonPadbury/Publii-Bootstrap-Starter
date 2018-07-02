@@ -1,0 +1,26 @@
+{{!--
+ * SITE MODULE - TAGS
+ * ==================
+--}}
+
+{{!-- We use an if-conditional {#if tags}} here because if no tag is assigned to the article the section will not display a tags list; with this conditional we can hide the empty section. Additionally we use custom if-conditional {{#if @config.custom.tags}} to switch this section on/off in the theme settings.--}}
+
+{{#if @config.custom.tags}}
+    {{#if tags}}
+
+    <div class="tags">
+        <h3>{{ translate 'sidebar.tags' }}</h3>
+        <ul>
+            {{#each tags}}
+                {{#checkIf @index '<' @config.custom.tagsAmount}}
+                    <li>
+                        <a href="{{url}}">{{name}}</a>
+                        <span class="text-muted float-right">({{postsNumber}})</span>
+                    </li>
+                {{/checkIf}}
+            {{/each}}
+        </ul>
+    </div>
+
+    {{/if}}
+{{/if}}

@@ -1,0 +1,59 @@
+{{> site-head}}
+
+<main>
+
+    {{#if @customHTML.beforePost}}
+        {{@customHTML.beforePost}}
+    {{/if}}
+
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="sidebar col-md-4 order-md-last">
+                {{> site-sidebar}}
+            </div>
+
+            {{#post}}
+            <article class="post col-md">
+                <header class="mb-4">
+                    <h1>
+                        {{title}}
+                    </h1>
+                </header>
+                
+                <div class="page-entry">
+                    {{#featuredImage}}
+                        {{#if url}}
+                            <figure>
+                                <img
+                                    src="{{url}}"
+                                    sizes="{{sizes.post}}"
+                                    srcset="{{srcset.post}}"
+                                    alt="{{alt}}">
+                                {{#checkIfAny caption credits}}
+                                    <figcaption>
+                                        {{caption}}
+                                        {{credits}}
+                                    </figcaption>
+                                {{/checkIfAny}}
+                            </figure>
+                        {{/if}}
+                    {{/featuredImage}}
+
+                    {{!-- The POST-PAGE CONTENT text (and embedded images, etc.) --}}
+                    {{{text}}}
+                </div>
+    
+            </article>
+            {{/post}}
+
+        </div>
+    </div>
+
+    {{#if @customHTML.afterPost}}
+        {{@customHTML.afterPost}}
+    {{/if}}
+
+</main>
+
+{{> site-footer}}

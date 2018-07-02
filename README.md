@@ -1,2 +1,9 @@
-# Publii-Bootstrap-Starter
-A Bootstrap 4 starter theme for Publii, a world-class CMS for static websites
+# Publii Bootstrap Starter
+
+_Version 0.9_
+
+***
+
+**Note:** an unfinished set of tutorials are in `TUTORIALS/`
+
+MIT Licence.

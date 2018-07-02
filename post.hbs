@@ -1,0 +1,210 @@
+{{> site-head}}
+
+<main>
+
+    {{#if @customHTML.beforePost}}
+        {{@customHTML.beforePost}}
+    {{/if}}
+
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="sidebar col-md-4 order-md-last">
+                {{> site-sidebar}}
+            </div>
+
+            {{#post}}
+            <article class="post col-md">
+                <header>
+                    <h1>
+                        {{title}}
+                    </h1>
+                    {{#checkIfAny 
+                    @config.post.displayDate
+                    @config.post.displayAuthor }}
+                        <div class="mb-5">
+
+                            {{#isFeatured}}
+                                <span class="badge badge-primary">
+                                    <i class="fas fa-star"></i>
+                                    Featured Post
+                                </span>&#32;
+                            {{/isFeatured}}
+
+                            {{#if @config.post.displayDate}}
+                                {{ translate 'post.publishedOn' }}
+                                <time datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+                                    {{date createdAt @config.custom.formatDate}}
+                                </time>
+                            {{/if}}
+
+                            {{#if @config.post.displayAuthor}}
+                                {{#if @config.post.displayDate}} / by {{else}} By {{/if}}
+                                {{#author}}
+                                    <a href="{{url}}" rel="author" title="{{name}}">{{name}}</a>
+                                {{/author}}
+                            {{/if}}
+
+                            {{#if tags}}
+                                / in&#32;
+                                <style>
+                                    .tag:after { content: "," }
+                                    .tag:last-of-type:after { content: "" }
+                                </style>
+                                {{#each tags}} <a class="tag" href="{{url}}">{{name}}</a> {{/each}} 
+                            {{/if}}
+
+                        </div>
+                    {{/checkIfAny}}
+                </header>
+                
+                <div class="post-entry">
+                    {{#featuredImage}}
+                        {{#if url}}
+                            <figure>
+                                <img
+                                    src="{{url}}"
+                                    sizes="{{sizes.post}}"
+                                    srcset="{{srcset.post}}"
+                                    alt="{{alt}}">
+                                {{#checkIfAny caption credits}}
+                                    <figcaption>
+                                        {{caption}}
+                                        {{credits}}
+                                    </figcaption>
+                                {{/checkIfAny}}
+                            </figure>
+                        {{/if}}
+                    {{/featuredImage}}
+
+                    {{!-- The POST CONTENT text (and embedded images, etc.) --}}
+                    {{{text}}}
+                </div>
+
+                {{#checkIfAny 
+                @config.post.displayLastUpdatedDate 
+                @config.post.displayShareButtons 
+                @config.post.displayAuthorBio 
+                @config.post.displayPostNavigation 
+                @config.post.displayRelatedPosts}}
+
+                <footer class="post-meta-footer mt-5 pt-3">
+
+                    <p>
+                        {{#if @config.post.displayLastUpdatedDate}}
+                            {{#if modifiedAt}}
+                                {{ translate 'post.lastUpdatedDate' }}
+                                {{date modifiedAt @config.custom.formatDate}}
+                            {{/if}}
+                        {{/if}}
+                    </p>
+
+                    {{> social-share-buttons}}
+
+                    <div class="mt-4">
+
+                    {{#if @config.post.displayAuthorBio}}
+                        {{#author}}
+                            <div class="media border rounded p-3">
+                                {{#if avatar}}
+                                    <img src="{{avatar}}" alt="{{name}}" class="mr-3" style="max-height: 100px; max-width: 100px; border-radius: 50%;">
+                                {{/if}}
+                                <div class="media-body">
+                                    {{#if name}}
+                                        <h3>Written by {{name}}</h3>
+                                    {{/if}}
+                                    {{#if description}}
+                                        <p class="mb-2">
+                                            {{description}}
+                                        </p>
+                                    {{/if}}
+                                    <p class="m-0">
+                                        <a href="{{url}}">
+                                            {{ translate 'post.viewAuthorPosts' }} by {{name}}
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        {{/author}}
+                    {{/if}}
+
+                    {{#if @config.post.displayRelatedPosts}}
+                        {{#if ../relatedPosts}}
+                            <div class="mt-4">
+                                <h3>
+                                    {{ translate 'post.relatedPosts' }}
+                                </h3>
+                                <ul>
+                                    {{#each ../relatedPosts}}
+                                    <li class="mb-3">
+                                        <h5 class="mb-0">
+                                            <a href="{{url}}">{{title}}</a>
+                                        </h5>
+                                        <time class="small" datetime="{{date createdAt 'YYYY-MM-DDTHH:mm'}}">
+                                            {{date createdAt @config.custom.formatDate}}
+                                        </time>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        {{/if}}
+                    {{/if}}
+
+                    </div>
+
+                    {{#if @config.post.displayPostNavigation}}
+                        {{#checkIfAny ../previousPost ../nextPost}}
+                            <nav class="row mt-5">
+                                {{#../previousPost}}
+                                    <div class="col-sm-6 post-prev">
+                                        <a href="{{url}}" class="btn btn-light btn-block post-nav-link" rel="prev">
+                                            <div class="row">
+                                                <i class="col-auto text-left far fa-chevron-left fa-3x"></i>
+                                                <div class="col text-left">
+                                                    {{ translate 'post.previousPost' }}
+                                                    <h5 class="mb-0">
+                                                        {{title}}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {{/../previousPost}}
+                                {{#../nextPost}}
+                                    <div class="col-sm-6 post-next">
+                                        <a href="{{url}}" class="btn btn-light btn-block  post-nav-link" rel="next">
+                                            <div class="row">
+                                                <i class="col-auto order-last text-right far fa-chevron-right fa-3x"></i>
+                                                <div class="col order-first text-right">
+                                                    {{ translate 'post.nextPost' }}
+                                                    <h5 class="mb-0">
+                                                        {{title}}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {{/../nextPost}}
+                            </nav>
+                        {{/checkIfAny}}
+                    {{/if}}
+
+                </footer>
+                {{/checkIfAny}}
+
+                {{!-- Disqus --}}
+    
+            </article>
+            {{/post}}
+
+        </div>
+    </div>
+
+    {{#if @customHTML.afterPost}}
+        {{@customHTML.afterPost}}
+    {{/if}}
+
+</main>
+
+
+{{> site-footer}}

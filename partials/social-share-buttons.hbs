@@ -1,0 +1,101 @@
+{{#if @config.post.displayShareButtons}}
+
+    <style>
+        a.btn-facebook    {background-color:#3b5998; color: #ffffff;}
+        a.btn-twitter     {background-color:#00b6f1; color: #ffffff;}
+        a.btn-gplus       {background-color:#df4a32; color: #ffffff;}
+        a.btn-pinterest   {background-color:#cb2027; color: #ffffff;}
+        a.btn-stumbleupon {background-color:#cb2027; color: #ffffff;}
+        a.btn-linkedin    {background-color:#007bb6; color: #ffffff;}
+        a.btn-youtube     {background-color:#b31217; color: #ffffff;}
+        a.btn-instagram   {background-color:#c32aa3; color: #ffffff;}
+        a.btn-tumblr      {background-color:#2c4762; color: #ffffff;}
+        a.btn-buffer      {background-color:#ffffff; color: #333333; box-shadow: inset 0 0 1px #333333;}
+        
+        a:hover.btn-facebook    {background-color:#263e60;}
+        a:hover.btn-twitter     {background-color:#0099bc;}
+        a:hover.btn-gplus       {background-color:#aa3327;}
+        a:hover.btn-pinterest   {background-color:#961a23;}
+        a:hover.btn-stumbleupon {background-color:#961a23;}
+        a:hover.btn-linkedin    {background-color:#005d82;}
+        a:hover.btn-youtube     {background-color:#7f0e17;}
+        a:hover.btn-instagram   {background-color:#8e2079;}
+        a:hover.btn-tumblr      {background-color:#15222d;}
+        a:hover.btn-buffer      {background-color:#eeeeee;}
+        
+        
+    </style>
+
+    <div class="pt-2">
+        {{ translate 'post.share' }}
+        {{#if @config.custom.shareFacebook}}
+            <a 
+                href="{{!--https://www.facebook.com/sharer/sharer.php?u={{encodeUrlFragment url}}--}}" 
+                class="js-share facebook btn btn-facebook btn-sm" 
+                title="{{ translate 'partials.shareButtons.shareWithFacebook' }}" 
+                rel="nofollow">
+                <i class="fab fa-facebook fa-fw fa-lg"></i> Facebook
+            </a>&#32;
+        {{/if}} 
+
+        {{#if @config.custom.shareTwitter}}
+            <a
+                href="{{!--https://twitter.com/share?url={{encodeUrlFragment url}}&amp;via={{#if @config.custom.shareTwitterName}}{{@config.custom.shareTwitterName}}{{else}}{{@website.name}}{{/if}}&amp;text={{encodeUrlFragment title}}--}}"
+                class="js-share twitter btn btn-twitter btn-sm"
+                title="{{ translate 'partials.shareButtons.shareWithTwitter' }}"
+                rel="nofollow">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>&#32;
+        {{/if}} 
+
+        {{#if @config.custom.shareGoogleplus}}
+            <a
+                href="{{!--https://plus.google.com/share?url={{encodeUrlFragment url}}--}}"
+                class="js-share gplus btn btn-gplus btn-sm"
+                title="{{ translate 'partials.shareButtons.shareWithGooglePlus' }}"
+                rel="nofollow">
+                <i class="fab fa-google-plus"></i> Google+
+            </a>&#32;
+        {{/if}} 
+
+        {{#if @config.custom.sharePinterest}}
+            <a
+                href="{{!--https://pinterest.com/pin/create/button/?url={{encodeUrlFragment url}}&amp;media={{encodeUrlFragment featured_image.url}}&amp;description={{encodeUrlFragment title}}--}}"
+                class="js-share pinterest btn btn-pinterest btn-sm"
+                title="{{ translate 'partials.shareButtons.shareWithPinterest' }}"
+                rel="nofollow">
+                <i class="fab fa-pinterest"></i> Pinterest
+            </a>&#32;
+        {{/if}} 
+
+        {{#if @config.custom.shareStumbleupon}}
+            <a
+                href="{{!--http://www.stumbleupon.com/submit?url={{encodeUrlFragment url}}&amp;title={{encodeUrlFragment title}}--}}"
+                class="js-share stumbleupon btn btn-stumbleupon btn-sm"
+                title="{{ translate 'partials.shareButtons.shareWithStumbleUpon' }}"
+                rel="nofollow">
+                <i class="fab fa-stumbleupon"></i> StumbleUpon
+            </a>&#32;
+        {{/if}} 
+
+        {{#if @config.custom.shareLinkedin}}
+            <a
+                href="{{!--http://www.linkedin.com/shareArticle?url={{encodeUrlFragment url}}&amp;title={{encodeUrlFragment title}}--}}"
+                class="js-share linkedin btn btn-linkedin btn-sm"
+                title="{{ translate 'partials.shareButtons.shareWithLinkedIn' }}"
+                rel="nofollow">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>&#32;
+        {{/if}} 
+
+        {{#if @config.custom.shareBuffer}}
+            <a
+                href="{{!--https://buffer.com/add?text={{encodeUrlFragment title}}&amp;url={{encodeUrlFragment url}}--}}"
+                class="js-share buffer btn btn-buffer btn-sm"
+                title="{{ translate 'partials.shareButtons.shareWithBuffer' }}"
+                rel="nofollow">
+                <i class="fab fa-buffer"></i> Buffer
+            </a>
+        {{/if}}
+    </div>
+{{/if}}

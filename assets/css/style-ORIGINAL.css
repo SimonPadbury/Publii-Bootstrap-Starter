@@ -1,0 +1,104 @@
+html {
+    font-size: undefinedrem
+}
+
+@media screen and (min-width:20rem) {
+    html {
+        font-size: calc(undefinedrem + (undefined - undefined) * ((100vw - 20rem) / 113))
+    }
+}
+
+@media screen and (min-width:133rem) {
+    html {
+        font-size: undefinedrem
+    }
+}
+
+body {
+    color: undefined
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: undefined
+}
+
+a {
+    color: undefined
+}
+
+.post__entry a:active, .post__entry a:focus, .post__entry a:hover {
+    color: undefined
+}
+
+a:active, a:focus, a:hover {
+    color: undefined
+}
+
+.post__entry a {
+    color: undefined
+}
+
+.post__nav__link:hover h5 {
+    color: undefined
+}
+
+.btn, [type=button], [type=submit], button {
+    background: undefined
+}
+
+[type=email]:focus, [type=number]:focus, [type=search]:focus, [type=tel]:focus,
+[type=text]:focus, [type=url]:focus, select:focus, textarea:focus {
+    -webkit-box-shadow: inset 0 0 2px undefined;
+    box-shadow: inset 0 0 2px undefined
+}
+
+[type=checkbox]:checked + .checkbox:before {
+    color: undefined
+}
+
+[type=radio]:checked + .radio:before {
+    background: undefined
+}
+
+select[multiple]:focus {
+    border-color: undefined
+}
+
+.box__title {
+    color: undefined
+}
+
+.page-header__title {
+    color: undefined
+}
+
+@media all and (min-width:56.25em) {
+    .container {
+        grid-template-columns: 1fr minmax(auto, undefined) undefined 1fr
+    }
+}
+
+.navbar__menu li a, .navbar__menu li span {
+    color: undefined
+}
+
+.navbar__menu li a:hover:not(span), .navbar__menu li span:hover:not(span) {
+    color: undefined
+}
+
+.hero {
+    min-height: undefined
+}
+
+.hero__image {
+    min-height: undefined
+}
+
+.hero__text > h1 {
+    color: undefined
+}
+
+.hero__text {
+    color: undefined
+}
+
